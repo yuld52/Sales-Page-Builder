@@ -85,28 +85,12 @@ function WABtn({ label, className }: { label: string; className?: string }) {
 }
 
 function TopBanner() {
-  const EXPIRY = new Date("2026-06-28T23:59:59");
-  const [ms, setMs] = useState(Math.max(0, EXPIRY.getTime() - Date.now()));
-  useEffect(() => {
-    const t = setInterval(() => setMs(Math.max(0, EXPIRY.getTime() - Date.now())), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const d = Math.floor(ms / 86400000);
-  const h = Math.floor((ms % 86400000) / 3600000);
-  const m = Math.floor((ms % 3600000) / 60000);
-  const s = Math.floor((ms % 60000) / 1000);
-  const pad = (n: number) => String(n).padStart(2, "0");
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] bg-red-600 text-white text-center text-xs sm:text-sm font-semibold py-2 px-4 flex items-center justify-center gap-2">
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-red-600 text-white text-center text-xs sm:text-sm font-sans py-2 px-4 flex items-center justify-center gap-2">
       <Sparkles className="w-3.5 h-3.5 shrink-0" />
       <span>
         Oferta Especial Expira em{" "}
-        <span className="font-black">28/06/2026</span>
-        {ms > 0 && (
-          <span className="ml-2 font-black tracking-wide">
-            — {d > 0 ? `${d}d ` : ""}{pad(h)}:{pad(m)}:{pad(s)}
-          </span>
-        )}
+        <span className="font-bold"> 28/06/2026</span>
       </span>
     </div>
   );
