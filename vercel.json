@@ -1,0 +1,11 @@
+{
+  "buildCommand": "pnpm install && pnpm --filter @workspace/landing-page run build:vercel",
+  "installCommand": "pnpm install",
+  "outputDirectory": "artifacts/landing-page/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
