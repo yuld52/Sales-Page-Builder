@@ -317,10 +317,9 @@ function LandingPage() {
                     href={CHECKOUT_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-black text-lg py-4 rounded-xl shadow-lg shadow-green-600/30 transition-all hover:-translate-y-0.5 active:scale-95 uppercase tracking-wide"
+                    className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-black text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-all hover:-translate-y-0.5 active:scale-95 uppercase tracking-widest"
                     data-testid="button-buy-main"
                   >
-                    <CreditCard className="w-5 h-5 shrink-0" />
                     Quero Acessar Agora
                   </a>
                 </div>
