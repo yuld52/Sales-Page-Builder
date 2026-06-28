@@ -9,13 +9,6 @@
       "destination": "/index.html"
     }
   ],
-  "functions": {
-    "api/[[...route]].ts": {
-      "runtime": "nodejs@20.x",
-      "memory": 1024,
-      "maxDuration": 60
-    }
-  },
   "env": {
     "NODE_ENV": "production",
     "PORT": "3000"

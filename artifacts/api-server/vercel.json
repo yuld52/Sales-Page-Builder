@@ -1,13 +1,6 @@
 {
   "buildCommand": "cd ../.. && pnpm install && pnpm --filter @workspace/api-server run build",
   "outputDirectory": "artifacts/api-server/dist",
-  "functions": {
-    "api/**": {
-      "runtime": "nodejs@20.x",
-      "memory": 1024,
-      "maxDuration": 60
-    }
-  },
   "env": {
     "NODE_ENV": "production"
   }
