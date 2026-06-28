@@ -1,8 +1,4 @@
 {
-  "rootDirectory": "artifacts/landing-page",
-  "installCommand": "cd ../.. && pnpm install",
-  "buildCommand": "cd ../.. && pnpm --filter @workspace/landing-page run build:vercel",
-  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
