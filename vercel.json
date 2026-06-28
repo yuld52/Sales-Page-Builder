@@ -1,13 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build"
-    }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm --filter @workspace/landing-page run build:vercel",
+  "outputDirectory": "artifacts/landing-page/dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
