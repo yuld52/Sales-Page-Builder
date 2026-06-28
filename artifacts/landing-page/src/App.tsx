@@ -317,7 +317,7 @@ function LandingPage() {
                     href={CHECKOUT_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-black text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-all hover:-translate-y-0.5 active:scale-95 uppercase tracking-widest"
+                    className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-all hover:-translate-y-0.5 active:scale-95 uppercase tracking-widest"
                     data-testid="button-buy-main"
                   >
                     Quero Acessar Agora
