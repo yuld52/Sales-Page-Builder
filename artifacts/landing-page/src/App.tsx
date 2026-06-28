@@ -15,6 +15,7 @@ const PRODUTO = "Tratamento do CORRIMENTO";
 const WA_NUMBER = "258840000000";
 const WA_MSG = encodeURIComponent(`Olá! Quero comprar o ${PRODUTO}.`);
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`;
+const CHECKOUT_LINK = "https://pay.meteorfy.com/checkout/70ab0ea9-e8b2-4a84-9a55-20d7161b62c6";
 
 function CountdownTimer() {
   const getEnd = () => {
@@ -176,8 +177,8 @@ function LandingPage() {
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-center mb-8">Como Acessar — É Fácil!</h2>
             <div className="grid md:grid-cols-3 gap-5 mb-8">
               {[
-                { n: "1", I: MessageCircle, t: "Fala Connosco no WhatsApp", d: "Clica no botão verde e manda mensagem." },
-                { n: "2", I: CreditCard, t: "Faz o Pagamento", d: "Aceitamos M-Pesa, e-Mola e cartão." },
+                { n: "1", I: CreditCard, t: "Clica no Botão de Compra", d: "Clica em 'Comprar Agora' e vai direto ao checkout seguro." },
+                { n: "2", I: Lock, t: "Faz o Pagamento", d: "Aceitamos M-Pesa, e-Mola e cartão — rápido e seguro." },
                 { n: "3", I: Package, t: "Recebe o Guia Digital", d: "Acesso imediato ao guia completo no telemóvel." },
               ].map((x, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-pink-50 rounded-2xl p-6 text-center border border-primary/10">
@@ -189,7 +190,16 @@ function LandingPage() {
               ))}
             </div>
             <div className="text-center">
-              <WABtn label="Pedir Agora pelo WhatsApp" className="text-lg px-9 py-4" />
+              <a
+                href={CHECKOUT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95 text-lg px-9 py-4"
+                data-testid="button-como-comprar-cta"
+              >
+                <CreditCard className="w-5 h-5 shrink-0" />
+                Comprar Agora
+              </a>
             </div>
           </div>
         </section>
@@ -311,12 +321,13 @@ function LandingPage() {
 
                   {/* Botão */}
                   <a
-                    href={WA_LINK}
+                    href={CHECKOUT_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-black text-lg py-4 rounded-xl shadow-lg shadow-green-600/30 transition-all hover:-translate-y-0.5 active:scale-95 uppercase tracking-wide"
                     data-testid="button-buy-main"
                   >
+                    <CreditCard className="w-5 h-5 shrink-0" />
                     Quero Acessar Agora
                   </a>
                 </div>
