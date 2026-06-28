@@ -1,5 +1,5 @@
 {
-  "buildCommand": "vite build --config vite.config.vercel.ts",
+  "buildCommand": "pnpm run build:vercel",
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
