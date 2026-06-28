@@ -87,7 +87,6 @@ function WABtn({ label, className }: { label: string; className?: string }) {
 function TopBanner() {
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] bg-red-600 text-white text-center text-xs sm:text-sm font-sans py-2 px-4 flex items-center justify-center gap-2">
-      <Sparkles className="w-3.5 h-3.5 shrink-0" />
       <span>
         Oferta Especial Expira em{" "}
         <span className="font-bold"> 28/06/2026</span>
@@ -208,7 +207,6 @@ function LandingPage() {
                 { I: Package, t: "Guia em PDF fácil de ler no telemóvel" },
                 { I: Heart, t: "Cuidados de higiene íntima diária" },
                 { I: Clock, t: "Acesso imediato após o pagamento" },
-                { I: Smile, t: "Linguagem simples e discreta" },
               ].map(({ I, t }, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="bg-white flex items-center gap-3 p-4 rounded-xl border border-primary/10 shadow-sm">
                   <div className="w-9 h-9 bg-primary/10 text-primary rounded-lg flex items-center justify-center shrink-0">
@@ -308,7 +306,7 @@ function LandingPage() {
                       <span className="text-2xl font-bold text-foreground mb-1">MT</span>
                     </div>
                     <p className="text-xs font-bold text-green-700 uppercase tracking-widest mt-2">
-                      Pagamento Único · Sem Mensalidades
+                      Pagamento Único
                     </p>
                   </div>
 
