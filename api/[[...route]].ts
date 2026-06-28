@@ -1,0 +1,7 @@
+import { VercelRequest, VercelResponse } from '@vercel/node';
+import app from '../artifacts/api-server/src/app';
+
+export default function handler(req: VercelRequest, res: VercelResponse) {
+  // Handle all API requests
+  return app(req, res);
+}
