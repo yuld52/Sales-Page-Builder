@@ -113,13 +113,6 @@ function TopBanner() {
 }
 
 function LandingPage() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", fn);
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-
   const toOffer = () => document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
 
   return (
@@ -127,24 +120,10 @@ function LandingPage() {
 
       <TopBanner />
 
-      {/* HEADER */}
-      <header className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur shadow py-3" : "bg-transparent py-4"}`}>
-        <div className="container mx-auto px-4 flex items-center justify-between max-w-5xl">
-          <div className="font-serif text-lg font-bold text-primary leading-tight">Tratamento do<br /><span className="text-xs font-normal text-muted-foreground uppercase tracking-widest">CORRIMENTO</span></div>
-          <button
-            onClick={toOffer}
-            className="bg-primary hover:bg-primary/90 text-white font-bold rounded-full text-sm px-5 py-2 transition-all"
-            data-testid="button-header-cta"
-          >
-            Ver Preço
-          </button>
-        </div>
-      </header>
-
       <main>
 
         {/* HERO */}
-        <section className="pt-32 pb-12 bg-gradient-to-b from-pink-50 to-white">
+        <section className="pt-16 pb-12 bg-gradient-to-b from-pink-50 to-white">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
@@ -378,7 +357,7 @@ function LandingPage() {
               <div className="mt-5 text-center">
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Formas de Pagamento</p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  {[{ I: Phone, l: "M-Pesa" }, { I: Phone, l: "e-Mola" }, { I: CreditCard, l: "Cartão" }].map(({ I, l }) => (
+                  {[{ I: Phone, l: "M-Pesa" }, { I: Phone, l: "e-Mola" }].map(({ I, l }) => (
                     <div key={l} className="flex items-center gap-1.5 bg-secondary/20 px-3 py-1.5 rounded-full text-xs font-medium border border-secondary/30">
                       <I className="w-3.5 h-3.5 text-primary" />{l}
                     </div>
@@ -396,10 +375,8 @@ function LandingPage() {
             {[
               { q: "O que recebo após a compra?", a: "Recebes um ficheiro PDF completo com o guia de tratamento do corrimento, enviado directamente pelo WhatsApp." },
               { q: "Quanto tempo demora a receber?", a: "O acesso é imediato — logo após a confirmação do pagamento, enviamos o guia pelo WhatsApp." },
-              { q: "O guia substitui o médico?", a: "Não. O guia é educativo e complementar. Se os sintomas forem graves ou persistentes, recomendamos sempre consultar um profissional de saúde." },
-              { q: "Quais os métodos de pagamento?", a: "Aceitamos M-Pesa, e-Mola e cartão bancário." },
+              { q: "Quais os métodos de pagamento?", a: "Aceitamos M-Pesa e e-Mola." },
               { q: "Posso devolver se não gostar?", a: "Sim! Tens 7 dias de garantia. Devolvemos o teu dinheiro na íntegra, sem perguntas." },
-              { q: "O guia é discreto?", a: "Sim. Todo o processo é feito de forma discreta pelo WhatsApp. A compra não aparece com nenhum nome comprometedor." },
             ].map((f, i) => <FAQItem key={i} q={f.q} a={f.a} />)}
           </div>
         </section>
@@ -424,16 +401,6 @@ function LandingPage() {
         </div>
       </footer>
 
-      {/* BOTÃO WHATSAPP FLUTUANTE */}
-      <a
-        href={WA_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-50 w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-110"
-        data-testid="button-whatsapp-float"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </a>
     </div>
   );
 }
