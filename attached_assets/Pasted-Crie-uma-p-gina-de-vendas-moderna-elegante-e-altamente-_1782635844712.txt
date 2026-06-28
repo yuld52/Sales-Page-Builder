@@ -1,0 +1,93 @@
+Crie uma página de vendas moderna, elegante e altamente persuasiva para um produto natural voltado ao bem-estar íntimo feminino e ao auxílio no combate ao corrimento vaginal.
+
+Utilize uma paleta de cores em tons de rosa claro, branco e lilás, transmitindo confiança, delicadeza e saúde.
+
+A página deve ser responsiva, rápida e otimizada para conversão.
+
+Estrutura:
+
+Hero Section
+
+Título impactante.
+Subtítulo mostrando os principais benefícios.
+Botão CTA grande: "Quero Cuidar da Minha Saúde Íntima".
+Imagem do produto em destaque.
+
+Principais Benefícios
+
+Auxilia no equilíbrio da flora íntima.
+Ajuda a reduzir desconfortos.
+Contribui para o bem-estar feminino.
+Fórmula natural.
+Fácil de usar.
+
+Problemas que Muitas Mulheres Enfrentam
+
+Corrimento recorrente.
+Mau odor.
+Coceira.
+Desconforto íntimo.
+Baixa autoestima causada pelos sintomas.
+
+Mostrar esses pontos de forma empática, sem gerar medo excessivo.
+
+Como o Produto Funciona
+Explicar de forma simples como os ingredientes atuam para ajudar a manter o equilíbrio íntimo.
+
+Utilizar ilustrações ou ícones modernos.
+
+Ingredientes
+Criar cards individuais para cada ingrediente com:
+
+Nome
+Benefícios
+Ícone
+
+Depoimentos
+Criar 6 depoimentos femininos realistas com foto circular, nome e cidade.
+
+Antes e Depois
+Espaço para imagens ilustrativas (sem mostrar conteúdo explícito).
+
+Garantia
+Caixa destacada com selo de garantia de 7 dias.
+
+Perguntas Frequentes
+Criar pelo menos 10 perguntas frequentes sobre:
+
+Como usar
+Em quanto tempo aparecem resultados
+Quem pode utilizar
+Contraindicações
+Entrega
+Pagamento
+
+Oferta
+Mostrar:
+
+Preço antigo riscado.
+Preço promocional.
+Parcelamento.
+Botão grande "Comprar Agora".
+
+Inserir contador regressivo.
+
+Mostrar selos de:
+
+Compra Segura
+SSL
+Pagamento Protegido
+Entrega Garantida
+
+Rodapé
+
+Política de Privacidade
+Termos de Uso
+Contato
+Aviso legal informando que os resultados podem variar e que o produto não substitui orientação médica. Recomendar procurar um profissional de saúde se os sintomas persistirem ou piorarem.
+
+Design moderno semelhante às páginas de vendas de produtos premium.
+
+Utilizar efeitos suaves de animação, ícones minimalistas, excelente tipografia e foco total em conversão.
+
+O código deve ser desenvolvido utilizando HTML5, Tailwind CSS e JavaScript puro, em um único arquivo, totalmente responsivo e otimizado para SEO e carregamento rápido.

@@ -1,0 +1,44 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "0aIDRNYwIDsmKlcp99TTr"
+uri = "file://artifacts/landing-page/public/images/hero-product.png"
+type = "image"
+title = "hero product bottle"
+
+[[generated]]
+id = "EL4nF3ISBaWzZO-g9hlJo"
+uri = "file://artifacts/landing-page/public/images/testimonial-1.png"
+type = "image"
+title = "Juliana M. portrait"
+
+[[generated]]
+id = "xTXakf12KGSOK542z4ccI"
+uri = "file://artifacts/landing-page/public/images/testimonial-2.png"
+type = "image"
+title = "Camila R. portrait"
+
+[[generated]]
+id = "rZmP-PiPQ_H4ClohIlIp5"
+uri = "file://artifacts/landing-page/public/images/testimonial-3.png"
+type = "image"
+title = "Fernanda S. portrait"
+
+[[generated]]
+id = "iSoaknlD7bC8njbofZjbt"
+uri = "file://artifacts/landing-page/public/images/testimonial-4.png"
+type = "image"
+title = "Patricia A. portrait"
+
+[[generated]]
+id = "XBT3UsHQFmsL7QBEc8fFT"
+uri = "file://artifacts/landing-page/public/images/testimonial-5.png"
+type = "image"
+title = "Renata O. portrait"
+
+[[generated]]
+id = "fjV-p_KOvNKI4Pq7qk2Fx"
+uri = "file://artifacts/landing-page/public/images/testimonial-6.png"
+type = "image"
+title = "Daniela C. portrait"
