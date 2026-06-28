@@ -85,11 +85,17 @@ function WABtn({ label, className }: { label: string; className?: string }) {
 }
 
 function TopBanner() {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const day = String(tomorrow.getDate()).padStart(2, "0");
+  const month = String(tomorrow.getMonth() + 1).padStart(2, "0");
+  const year = tomorrow.getFullYear();
+  const dateStr = `${day}/${month}/${year}`;
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] bg-red-600 text-white text-center text-xs sm:text-sm font-sans py-2 px-4 flex items-center justify-center gap-2">
       <span>
         Oferta Especial Expira em{" "}
-        <span className="font-bold"> 28/06/2026</span>
+        <span className="font-bold"> {dateStr}</span>
       </span>
     </div>
   );
