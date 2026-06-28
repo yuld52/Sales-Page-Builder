@@ -1,7 +1,0 @@
-{
-  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @workspace/api-server run build",
-  "outputDirectory": "artifacts/api-server/dist",
-  "env": {
-    "NODE_ENV": "production"
-  }
-}
