@@ -339,12 +339,9 @@ function LandingPage() {
               {/* Pagamentos */}
               <div className="mt-5 text-center">
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Formas de Pagamento</p>
-                <div className="flex flex-wrap justify-center gap-3">
-                  {[{ I: Phone, l: "M-Pesa" }, { I: Phone, l: "e-Mola" }].map(({ I, l }) => (
-                    <div key={l} className="flex items-center gap-1.5 bg-secondary/20 px-3 py-1.5 rounded-full text-xs font-medium border border-secondary/30">
-                      <I className="w-3.5 h-3.5 text-primary" />{l}
-                    </div>
-                  ))}
+                <div className="flex flex-wrap justify-center items-center gap-4">
+                  <img src="/images/mpesa.webp" alt="M-Pesa" className="h-12 w-12 rounded-lg object-cover shadow-sm" />
+                  <img src="/images/emola.webp" alt="e-Mola" className="h-12 w-12 rounded-lg object-cover shadow-sm" />
                 </div>
               </div>
             </div>
