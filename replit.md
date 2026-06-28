@@ -1,36 +1,29 @@
-# [Project name]
+# Tratamento do CORRIMENTO — Landing Page
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A sales landing page for a digital guide on treating vaginal discharge, targeting women in Mozambique. Fully frontend-only; no backend or database required.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Landing page runs via the `artifacts/landing-page: web` workflow
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: Vite + React 19, Tailwind CSS v4, Framer Motion
+- UI: shadcn/ui (Radix primitives), Lucide icons
+- Font: Poppins (Google Fonts)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
-
-## Architecture decisions
-
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- `artifacts/landing-page/src/App.tsx` — entire landing page (single-page, no routing needed)
+- `artifacts/landing-page/src/index.css` — theme (rose/pink color system, Poppins font)
+- `artifacts/landing-page/public/images/` — product and testimonial images
+- `artifacts/landing-page/index.html` — SEO metadata, OG tags, Google Fonts preconnect
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+One-page sales site for "Tratamento do CORRIMENTO" (99 MT digital guide). Features: countdown timer, hero, how-to-buy steps, benefits, testimonials, 7-day guarantee, pricing card, FAQ, and footer. Checkout links to an external payment processor (meteorfy.com).
 
 ## User preferences
 
@@ -38,7 +31,8 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- This is a purely frontend app — no API server or database needed.
+- Checkout and WhatsApp links in `App.tsx` point to external services (meteorfy.com, wa.me).
 
 ## Pointers
 
