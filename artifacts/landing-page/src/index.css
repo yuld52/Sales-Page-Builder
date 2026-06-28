@@ -106,23 +106,23 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 0 0% 100%;         /* white */
-  --foreground: 330 15% 20%;       /* dark rose-brown text */
-  --border: 330 30% 88%;           /* soft pink border */
-  --input: 330 30% 88%;
-  --ring: 330 60% 75%;
+  --background: 0 0% 100%;
+  --foreground: 330 25% 8%;        /* near-black with warm rose tint */
+  --border: 330 30% 85%;
+  --input: 330 30% 85%;
+  --ring: 330 75% 50%;
   --card: 0 0% 100%;
-  --card-foreground: 330 15% 20%;
-  --card-border: 330 30% 88%;
+  --card-foreground: 330 25% 8%;
+  --card-border: 330 30% 85%;
   --popover: 0 0% 100%;
-  --popover-foreground: 330 15% 20%;
-  --popover-border: 330 30% 88%;
-  --primary: 330 60% 75%;          /* rose pink */
+  --popover-foreground: 330 25% 8%;
+  --popover-border: 330 30% 85%;
+  --primary: 330 75% 52%;          /* vivid deep rose */
   --primary-foreground: 0 0% 100%;
-  --secondary: 290 40% 88%;        /* soft lilac */
-  --secondary-foreground: 290 30% 30%;
-  --muted: 330 20% 96%;
-  --muted-foreground: 330 15% 50%;
+  --secondary: 290 45% 85%;
+  --secondary-foreground: 290 35% 20%;
+  --muted: 330 20% 95%;
+  --muted-foreground: 330 20% 35%; /* dark enough to read clearly */
   --accent: 290 50% 85%;           /* lilac accent */
   --accent-foreground: 290 30% 25%;
   --destructive: 0 72% 51%;
