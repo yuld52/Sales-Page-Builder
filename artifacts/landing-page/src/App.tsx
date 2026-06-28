@@ -84,6 +84,34 @@ function WABtn({ label, className }: { label: string; className?: string }) {
   );
 }
 
+function TopBanner() {
+  const EXPIRY = new Date("2026-06-28T23:59:59");
+  const [ms, setMs] = useState(Math.max(0, EXPIRY.getTime() - Date.now()));
+  useEffect(() => {
+    const t = setInterval(() => setMs(Math.max(0, EXPIRY.getTime() - Date.now())), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const d = Math.floor(ms / 86400000);
+  const h = Math.floor((ms % 86400000) / 3600000);
+  const m = Math.floor((ms % 3600000) / 60000);
+  const s = Math.floor((ms % 60000) / 1000);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-red-600 text-white text-center text-xs sm:text-sm font-semibold py-2 px-4 flex items-center justify-center gap-2">
+      <Sparkles className="w-3.5 h-3.5 shrink-0" />
+      <span>
+        Oferta Especial Expira em{" "}
+        <span className="font-black">28/06/2026</span>
+        {ms > 0 && (
+          <span className="ml-2 font-black tracking-wide">
+            — {d > 0 ? `${d}d ` : ""}{pad(h)}:{pad(m)}:{pad(s)}
+          </span>
+        )}
+      </span>
+    </div>
+  );
+}
+
 function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -97,8 +125,10 @@ function LandingPage() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
 
+      <TopBanner />
+
       {/* HEADER */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur shadow py-3" : "bg-transparent py-4"}`}>
+      <header className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur shadow py-3" : "bg-transparent py-4"}`}>
         <div className="container mx-auto px-4 flex items-center justify-between max-w-5xl">
           <div className="font-serif text-lg font-bold text-primary leading-tight">Tratamento do<br /><span className="text-xs font-normal text-muted-foreground uppercase tracking-widest">CORRIMENTO</span></div>
           <button
@@ -114,7 +144,7 @@ function LandingPage() {
       <main>
 
         {/* HERO */}
-        <section className="pt-24 pb-12 bg-gradient-to-b from-pink-50 to-white">
+        <section className="pt-32 pb-12 bg-gradient-to-b from-pink-50 to-white">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
