@@ -316,11 +316,32 @@ function LandingPage() {
                     </p>
                   </div>
 
-                  {/* Botão com 3 chevrons em cascata em cada lado */}
+                  {/* Mobile: chevrons acima ↓  |  Desktop: chevrons nas laterais → ← */}
+
+                  {/* Chevrons mobile — visíveis só em mobile, apontam para baixo */}
+                  <div className="flex sm:hidden justify-center gap-10 mb-1">
+                    {[0, 1].map((col) => (
+                      <div key={col} className="flex flex-col items-center">
+                        {[0, 1, 2].map((i) => (
+                          <motion.div
+                            key={i}
+                            animate={{ y: [0, 6, 0], opacity: [0.3, 1, 0.3] }}
+                            transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                          >
+                            <svg viewBox="0 0 24 24" className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="18 9 12 15 6 9" />
+                            </svg>
+                          </motion.div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Layout do botão */}
                   <div className="flex items-center gap-1">
 
-                    {/* 3 chevrons esquerda → apontam para a direita */}
-                    <div className="flex items-center shrink-0">
+                    {/* 3 chevrons esquerda → (só desktop) */}
+                    <div className="hidden sm:flex items-center shrink-0">
                       {[0, 1, 2].map((i) => (
                         <motion.div
                           key={i}
@@ -338,7 +359,7 @@ function LandingPage() {
                       href={CHECKOUT_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
+                      className="flex-1 w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
                       animate={{ scale: [1, 1.035, 1] }}
                       transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                       data-testid="button-buy-main"
@@ -346,8 +367,8 @@ function LandingPage() {
                       Quero Acessar Agora
                     </motion.a>
 
-                    {/* 3 chevrons direita ← apontam para a esquerda */}
-                    <div className="flex items-center shrink-0">
+                    {/* 3 chevrons direita ← (só desktop) */}
+                    <div className="hidden sm:flex items-center shrink-0">
                       {[2, 1, 0].map((i) => (
                         <motion.div
                           key={i}
