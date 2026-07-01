@@ -316,16 +316,50 @@ function LandingPage() {
                     </p>
                   </div>
 
-                  {/* Botão */}
-                  <a
-                    href={CHECKOUT_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-all hover:-translate-y-0.5 active:scale-95 uppercase tracking-widest"
-                    data-testid="button-buy-main"
-                  >
-                    Quero Acessar Agora
-                  </a>
+                  {/* Botão com setas pulsantes */}
+                  <div className="relative flex items-center gap-2">
+                    {/* Setas esquerda */}
+                    <div className="flex items-center gap-0.5 shrink-0">
+                      {[0, 1, 2].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ x: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
+                          transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-green-500">
+                            <polyline points="9 18 15 12 9 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <motion.a
+                      href={CHECKOUT_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
+                      animate={{ scale: [1, 1.03, 1] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                      data-testid="button-buy-main"
+                    >
+                      Quero Acessar Agora
+                    </motion.a>
+
+                    {/* Setas direita */}
+                    <div className="flex items-center gap-0.5 shrink-0 rotate-180">
+                      {[0, 1, 2].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ x: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
+                          transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-green-500">
+                            <polyline points="9 18 15 12 9 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
 
