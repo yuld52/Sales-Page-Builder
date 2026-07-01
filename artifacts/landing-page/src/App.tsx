@@ -316,49 +316,44 @@ function LandingPage() {
                     </p>
                   </div>
 
-                  {/* Botão com setas pulsantes */}
-                  <div className="relative flex items-center gap-2">
-                    {/* Setas esquerda */}
-                    <div className="flex items-center gap-0.5 shrink-0">
-                      {[0, 1, 2].map((i) => (
-                        <motion.div
-                          key={i}
-                          animate={{ x: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
-                          transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
-                        >
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-green-500">
-                            <polyline points="9 18 15 12 9 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </motion.div>
-                      ))}
+                  {/* Botão com setas curvas pulsantes */}
+                  <div className="flex flex-col items-center gap-2">
+                    {/* Setas acima apontando para baixo */}
+                    <div className="flex items-end justify-center gap-8">
+                      {/* Seta curva esquerda — aponta para baixo-direita */}
+                      <motion.div
+                        animate={{ y: [0, 6, 0], opacity: [0.8, 1, 0.8] }}
+                        transition={{ duration: 1.0, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <svg viewBox="0 0 90 110" className="w-10 h-12" fill="none">
+                          <path d="M 65 8 C 5 8 5 85 60 95" stroke="#ef4444" strokeWidth="13" strokeLinecap="round"/>
+                          <polygon points="78,100 55,86 75,78" fill="#ef4444"/>
+                        </svg>
+                      </motion.div>
+                      {/* Seta curva direita — aponta para baixo-esquerda (espelhada) */}
+                      <motion.div
+                        animate={{ y: [0, 6, 0], opacity: [0.8, 1, 0.8] }}
+                        transition={{ duration: 1.0, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
+                        style={{ transform: "scaleX(-1)" }}
+                      >
+                        <svg viewBox="0 0 90 110" className="w-10 h-12" fill="none">
+                          <path d="M 65 8 C 5 8 5 85 60 95" stroke="#ef4444" strokeWidth="13" strokeLinecap="round"/>
+                          <polygon points="78,100 55,86 75,78" fill="#ef4444"/>
+                        </svg>
+                      </motion.div>
                     </div>
 
                     <motion.a
                       href={CHECKOUT_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
-                      animate={{ scale: [1, 1.03, 1] }}
-                      transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                      className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
+                      animate={{ scale: [1, 1.035, 1] }}
+                      transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                       data-testid="button-buy-main"
                     >
                       Quero Acessar Agora
                     </motion.a>
-
-                    {/* Setas direita */}
-                    <div className="flex items-center gap-0.5 shrink-0 rotate-180">
-                      {[0, 1, 2].map((i) => (
-                        <motion.div
-                          key={i}
-                          animate={{ x: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
-                          transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
-                        >
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-green-500">
-                            <polyline points="9 18 15 12 9 6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </motion.div>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </motion.div>
