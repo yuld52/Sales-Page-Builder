@@ -317,43 +317,45 @@ function LandingPage() {
                   </div>
 
                   {/* Botão com setas curvas pulsantes */}
-                  <div className="flex flex-col items-center gap-2">
-                    {/* Setas acima apontando para baixo */}
-                    <div className="flex items-end justify-center gap-8">
-                      {/* Seta curva esquerda — aponta para baixo-direita */}
-                      <motion.div
-                        animate={{ y: [0, 6, 0], opacity: [0.8, 1, 0.8] }}
-                        transition={{ duration: 1.0, repeat: Infinity, ease: "easeInOut" }}
-                      >
-                        <svg viewBox="0 0 90 110" className="w-10 h-12" fill="none">
-                          <path d="M 65 8 C 5 8 5 85 60 95" stroke="#ef4444" strokeWidth="13" strokeLinecap="round"/>
-                          <polygon points="78,100 55,86 75,78" fill="#ef4444"/>
-                        </svg>
-                      </motion.div>
-                      {/* Seta curva direita — aponta para baixo-esquerda (espelhada) */}
-                      <motion.div
-                        animate={{ y: [0, 6, 0], opacity: [0.8, 1, 0.8] }}
-                        transition={{ duration: 1.0, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
-                        style={{ transform: "scaleX(-1)" }}
-                      >
-                        <svg viewBox="0 0 90 110" className="w-10 h-12" fill="none">
-                          <path d="M 65 8 C 5 8 5 85 60 95" stroke="#ef4444" strokeWidth="13" strokeLinecap="round"/>
-                          <polygon points="78,100 55,86 75,78" fill="#ef4444"/>
-                        </svg>
-                      </motion.div>
-                    </div>
+                  <div className="flex items-center gap-2">
+
+                    {/* Seta curva esquerda — aponta para a direita */}
+                    <motion.div
+                      className="shrink-0"
+                      animate={{ x: [0, 5, 0], scale: [1, 1.08, 1] }}
+                      transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <svg viewBox="0 0 95 95" className="w-12 h-12" fill="none">
+                        <path d="M 12 85 C 12 25 40 8 72 12" stroke="#ef4444" strokeWidth="17" strokeLinecap="round"/>
+                        <polygon points="90,13 68,0 68,26" fill="#ef4444"/>
+                      </svg>
+                    </motion.div>
 
                     <motion.a
                       href={CHECKOUT_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
+                      className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
                       animate={{ scale: [1, 1.035, 1] }}
                       transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                       data-testid="button-buy-main"
                     >
                       Quero Acessar Agora
                     </motion.a>
+
+                    {/* Seta curva direita — espelhada, aponta para a esquerda */}
+                    <motion.div
+                      className="shrink-0"
+                      style={{ transform: "scaleX(-1)" }}
+                      animate={{ x: [0, -5, 0], scale: [1, 1.08, 1] }}
+                      transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                    >
+                      <svg viewBox="0 0 95 95" className="w-12 h-12" fill="none">
+                        <path d="M 12 85 C 12 25 40 8 72 12" stroke="#ef4444" strokeWidth="17" strokeLinecap="round"/>
+                        <polygon points="90,13 68,0 68,26" fill="#ef4444"/>
+                      </svg>
+                    </motion.div>
+
                   </div>
                 </div>
               </motion.div>
