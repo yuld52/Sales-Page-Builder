@@ -319,16 +319,20 @@ function LandingPage() {
                   {/* Botão com 3 chevrons em cascata em cada lado */}
                   <div className="flex items-center gap-1">
 
-                    {/* 1 chevron esquerda → aponta para a direita */}
-                    <motion.div
-                      className="shrink-0"
-                      animate={{ x: [0, 7, 0], opacity: [0.4, 1, 0.4] }}
-                      transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="9 18 15 12 9 6" />
-                      </svg>
-                    </motion.div>
+                    {/* 2 chevrons esquerda → apontam para a direita */}
+                    <div className="flex items-center shrink-0">
+                      {[0, 1].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ x: [0, 7, 0], opacity: [0.3, 1, 0.3] }}
+                          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                        >
+                          <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                          </svg>
+                        </motion.div>
+                      ))}
+                    </div>
 
                     <motion.a
                       href={CHECKOUT_LINK}
@@ -342,16 +346,20 @@ function LandingPage() {
                       Quero Acessar Agora
                     </motion.a>
 
-                    {/* 1 chevron direita ← aponta para a esquerda */}
-                    <motion.div
-                      className="shrink-0"
-                      animate={{ x: [0, -7, 0], opacity: [0.4, 1, 0.4] }}
-                      transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="15 18 9 12 15 6" />
-                      </svg>
-                    </motion.div>
+                    {/* 2 chevrons direita ← apontam para a esquerda */}
+                    <div className="flex items-center shrink-0">
+                      {[1, 0].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ x: [0, -7, 0], opacity: [0.3, 1, 0.3] }}
+                          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                        >
+                          <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                          </svg>
+                        </motion.div>
+                      ))}
+                    </div>
 
                   </div>
                 </div>
