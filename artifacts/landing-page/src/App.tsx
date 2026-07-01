@@ -316,20 +316,23 @@ function LandingPage() {
                     </p>
                   </div>
 
-                  {/* Botão com setas curvas pulsantes */}
-                  <div className="flex items-center gap-2">
+                  {/* Botão com 3 chevrons em cascata em cada lado */}
+                  <div className="flex items-center gap-1">
 
-                    {/* Seta curva esquerda — aponta para a direita */}
-                    <motion.div
-                      className="shrink-0"
-                      animate={{ x: [0, 5, 0], scale: [1, 1.08, 1] }}
-                      transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <svg viewBox="0 0 95 95" className="w-12 h-12" fill="none">
-                        <path d="M 12 85 C 12 25 40 8 72 12" stroke="#ef4444" strokeWidth="17" strokeLinecap="round"/>
-                        <polygon points="90,13 68,0 68,26" fill="#ef4444"/>
-                      </svg>
-                    </motion.div>
+                    {/* 3 chevrons esquerda → apontam para a direita */}
+                    <div className="flex items-center shrink-0">
+                      {[0, 1, 2].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ x: [0, 7, 0], opacity: [0.3, 1, 0.3] }}
+                          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                        >
+                          <svg viewBox="0 0 24 24" className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                          </svg>
+                        </motion.div>
+                      ))}
+                    </div>
 
                     <motion.a
                       href={CHECKOUT_LINK}
@@ -343,18 +346,20 @@ function LandingPage() {
                       Quero Acessar Agora
                     </motion.a>
 
-                    {/* Seta curva direita — espelhada, aponta para a esquerda */}
-                    <motion.div
-                      className="shrink-0"
-                      style={{ transform: "scaleX(-1)" }}
-                      animate={{ x: [0, -5, 0], scale: [1, 1.08, 1] }}
-                      transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                    >
-                      <svg viewBox="0 0 95 95" className="w-12 h-12" fill="none">
-                        <path d="M 12 85 C 12 25 40 8 72 12" stroke="#ef4444" strokeWidth="17" strokeLinecap="round"/>
-                        <polygon points="90,13 68,0 68,26" fill="#ef4444"/>
-                      </svg>
-                    </motion.div>
+                    {/* 3 chevrons direita ← apontam para a esquerda */}
+                    <div className="flex items-center shrink-0">
+                      {[2, 1, 0].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ x: [0, -7, 0], opacity: [0.3, 1, 0.3] }}
+                          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                        >
+                          <svg viewBox="0 0 24 24" className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                          </svg>
+                        </motion.div>
+                      ))}
+                    </div>
 
                   </div>
                 </div>
