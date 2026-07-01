@@ -324,10 +324,10 @@ function LandingPage() {
                       {[0, 1].map((i) => (
                         <motion.div
                           key={i}
-                          animate={{ x: [0, 7, 0], opacity: [0.3, 1, 0.3] }}
+                          animate={{ opacity: [0.2, 1, 0.2] }}
                           transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
                         >
-                          <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="9 18 15 12 9 6" />
                           </svg>
                         </motion.div>
@@ -351,10 +351,10 @@ function LandingPage() {
                       {[1, 0].map((i) => (
                         <motion.div
                           key={i}
-                          animate={{ x: [0, -7, 0], opacity: [0.3, 1, 0.3] }}
+                          animate={{ opacity: [0.2, 1, 0.2] }}
                           transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
                         >
-                          <svg viewBox="0 0 24 24" className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="15 18 9 12 15 6" />
                           </svg>
                         </motion.div>
