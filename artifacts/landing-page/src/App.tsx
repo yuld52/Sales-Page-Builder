@@ -316,19 +316,17 @@ function LandingPage() {
                     </p>
                   </div>
 
-                  {/* Botão com 3 chevrons em cascata em cada lado */}
-                  <div className="flex items-center gap-1">
-
-                    {/* 2 chevrons esquerda → apontam para a direita */}
-                    <div className="flex items-center shrink-0">
+                  {/* Botão com chevrons acima a apontar para baixo */}
+                  <div className="space-y-2">
+                    <div className="flex justify-center gap-6">
                       {[0, 1].map((i) => (
                         <motion.div
                           key={i}
                           animate={{ opacity: [0.2, 1, 0.2] }}
-                          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.25 }}
                         >
                           <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="9 18 15 12 9 6" />
+                            <polyline points="6 9 12 15 18 9" />
                           </svg>
                         </motion.div>
                       ))}
@@ -338,29 +336,13 @@ function LandingPage() {
                       href={CHECKOUT_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
+                      className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold text-base py-4 rounded-xl shadow-lg shadow-green-600/30 transition-colors active:scale-95 uppercase tracking-widest"
                       animate={{ scale: [1, 1.035, 1] }}
                       transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                       data-testid="button-buy-main"
                     >
                       Quero Acessar Agora
                     </motion.a>
-
-                    {/* 2 chevrons direita ← apontam para a esquerda */}
-                    <div className="flex items-center shrink-0">
-                      {[1, 0].map((i) => (
-                        <motion.div
-                          key={i}
-                          animate={{ opacity: [0.2, 1, 0.2] }}
-                          transition={{ duration: 0.85, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
-                        >
-                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="15 18 9 12 15 6" />
-                          </svg>
-                        </motion.div>
-                      ))}
-                    </div>
-
                   </div>
                 </div>
               </motion.div>
