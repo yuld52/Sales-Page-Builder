@@ -130,13 +130,15 @@ function LandingPage() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6">
-                  <button
+                  <motion.button
                     onClick={toOffer}
-                    className="bg-primary hover:bg-primary/90 text-white font-bold text-base px-7 py-4 rounded-full shadow-lg shadow-primary/25 hover:-translate-y-0.5 transition-all"
+                    className="bg-primary hover:bg-primary/90 text-white font-bold text-base px-7 py-4 rounded-full shadow-lg shadow-primary/25 transition-colors"
+                    animate={{ scale: [1, 1.04, 1] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                     data-testid="button-hero-cta"
                   >
                     Quero Tratar o Corrimento Agora
-                  </button>
+                  </motion.button>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-semibold text-muted-foreground">
@@ -188,16 +190,18 @@ function LandingPage() {
               ))}
             </div>
             <div className="text-center">
-              <a
+              <motion.a
                 href={CHECKOUT_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold rounded-full shadow-lg transition-all hover:-translate-y-0.5 active:scale-95 text-lg px-9 py-4"
+                className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold rounded-full shadow-lg transition-colors active:scale-95 text-lg px-9 py-4"
+                animate={{ scale: [1, 1.04, 1] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                 data-testid="button-como-comprar-cta"
               >
                 <CreditCard className="w-5 h-5 shrink-0" />
                 Comprar Agora
-              </a>
+              </motion.a>
             </div>
           </div>
         </section>
