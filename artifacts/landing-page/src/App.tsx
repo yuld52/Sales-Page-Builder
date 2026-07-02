@@ -97,7 +97,7 @@ function TopBanner() {
   const year = tomorrow.getFullYear();
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] bg-red-600 text-white text-center text-xs sm:text-sm font-sans py-2 px-4 flex items-center justify-center gap-2">
-      🔥 Oferta Especial termina em <span className="font-bold">{day}/{month}/{year}</span> — Não percas!
+      🔥 Oferta Especial termina em <span className="font-bold">{day}/{month}/{year}</span> — Não perca!
     </div>
   );
 }
