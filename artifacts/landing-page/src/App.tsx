@@ -145,7 +145,7 @@ function LandingPage() {
                 </div>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-foreground leading-tight mb-3">
-                  Trata o <span className="text-primary">Corrimento</span> em Casa — Rápido e Discreto
+                  Trata o <span className="text-primary">Corrimento</span> em Casa — Rápido
                 </h1>
 
                 <p className="text-base text-muted-foreground mb-3 max-w-md mx-auto lg:mx-0">
