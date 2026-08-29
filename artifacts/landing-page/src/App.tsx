@@ -7,15 +7,16 @@ import {
   ShieldCheck, BookOpen, Heart, Sparkles, Smile, Clock,
   Star, Lock, CreditCard, Phone, MessageCircle,
   Package, ChevronDown, ChevronUp, MapPin, CheckCircle2, Check,
+  ArrowLeft, ArrowRight, AlertTriangle, CircleHelp, RotateCcw,
+  UserRound, Stethoscope,
 } from "lucide-react";
 
 const queryClient = new QueryClient();
 
 const PRODUTO = "Tratamento do CORRIMENTO";
-const WA_NUMBER = "258840000000";
-const WA_MSG = encodeURIComponent(`Olá! Quero comprar o ${PRODUTO}.`);
+const WA_NUMBER = "258879486896";
+const WA_MSG = encodeURIComponent(`Olá! Quero comprar o ${PRODUTO} por 99 MT. Pode enviar-me as instruções de pagamento, por favor.`);
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}`;
-const CHECKOUT_LINK = "https://pay.meteorfy.com/checkout/70ab0ea9-e8b2-4a84-9a55-20d7161b62c6";
 
 function CountdownTimer() {
   const getEnd = () => {
@@ -97,16 +98,17 @@ function TopBanner() {
   const year = tomorrow.getFullYear();
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] bg-red-600 text-white text-center text-xs sm:text-sm font-sans py-2 px-4 flex items-center justify-center gap-2">
-      🔥 Oferta Especial termina em <span className="font-bold">{day}/{month}/{year}</span> — Não perca!
+      <Sparkles className="w-3.5 h-3.5" /> Oferta Especial termina em <span className="font-bold">{day}/{month}/{year}</span> — Não perca!
     </div>
   );
 }
 
-function StickyBottomBar() {
+function StickyBottomBar({ visible = true }: { visible?: boolean }) {
+  if (!visible) return null;
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white border-t-2 border-green-500 shadow-2xl px-4 py-3">
       <motion.a
-        href={CHECKOUT_LINK}
+        href={WA_LINK}
         target="_blank"
         rel="noopener noreferrer"
         className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-xl text-base uppercase tracking-wide shadow-lg"
@@ -117,8 +119,358 @@ function StickyBottomBar() {
         COMPRAR AGORA — SÓ 99 MT
       </motion.a>
       <p className="text-center text-xs text-muted-foreground mt-1.5 font-medium">
-        💚 Paga por M-Pesa ou e-Mola &nbsp;·&nbsp; ✅ Recebes pelo WhatsApp
+        💚 Paga facilmente por M-Pesa ou e-Mola &nbsp;·&nbsp; ✅ Recebes no WhatsApp
       </p>
+    </div>
+  );
+}
+
+const quizQuestions = [
+  {
+    id: "fluxo",
+    eyebrow: "Pergunta 1 de 5",
+    question: "Como descreves melhor a alteração que notaste?",
+    helper: "Escolhe a opção que mais se aproxima do que notaste. Não há respostas certas nem erradas.",
+    options: [
+      { id: "claro", label: "Transparente ou esbranquiçado", description: "Uma alteração leve na cor ou na quantidade.", I: Sparkles },
+      { id: "espesso", label: "Mais espesso que o normal", description: "A textura parece diferente do habitual.", I: CircleHelp },
+      { id: "colorido", label: "Amarelado ou esverdeado", description: "A cor mudou de forma visível.", I: AlertTriangle },
+      { id: "incerto", label: "Não tenho a certeza", description: "Prefiro aprender primeiro o que observar.", I: UserRound },
+    ],
+  },
+  {
+    id: "duracao",
+    eyebrow: "Pergunta 2 de 5",
+    question: "Há quanto tempo reparaste nesta alteração?",
+    helper: "Pensa em quando começaste a notar que estava diferente.",
+    options: [
+      { id: "recente", label: "Começou há pouco tempo", description: "Reparei recentemente.", I: Clock },
+      { id: "dias", label: "Há alguns dias", description: "Ainda estou a observar.", I: Clock },
+      { id: "muito-longo", label: "Há semanas ou volta sempre", description: "Tem acontecido mais do que uma vez.", I: RotateCcw },
+      { id: "incerto", label: "Não sei precisar", description: "Não reparei logo no início.", I: CircleHelp },
+    ],
+  },
+  {
+    id: "sintomas",
+    eyebrow: "Pergunta 3 de 5",
+    question: "Além disso, sentes algum desconforto?",
+    helper: "A tua resposta ajuda a perceber quando é importante procurar avaliação.",
+    options: [
+      { id: "nenhum", label: "Não, só notei a alteração", description: "Não sinto mais nenhum desconforto.", I: Smile },
+      { id: "comichao", label: "Com comichão ou ardor", description: "Sinto algum incómodo na zona íntima.", I: Heart },
+      { id: "forte", label: "Dor forte, febre ou mal-estar", description: "Estou a sentir-me doente ou com dor intensa.", I: AlertTriangle },
+      { id: "incerto", label: "Não tenho a certeza", description: "É difícil descrever o que sinto.", I: CircleHelp },
+    ],
+  },
+  {
+    id: "contexto",
+    eyebrow: "Pergunta 4 de 5",
+    question: "Há alguma situação especial neste momento?",
+    helper: "Se preferires, podes escolher “prefiro não responder”.",
+    options: [
+      { id: "nao", label: "Não", description: "Não se aplica ao meu caso.", I: UserRound },
+      { id: "gravida", label: "Estou grávida ou no pós-parto", description: "Quero ter um cuidado extra.", I: Heart },
+      { id: "medicacao", label: "Comecei ou mudei uma medicação", description: "Houve uma mudança recente.", I: Stethoscope },
+      { id: "prefiro-nao", label: "Prefiro não responder", description: "Continuo para receber informação geral.", I: Lock },
+    ],
+  },
+  {
+    id: "sinais",
+    eyebrow: "Pergunta 5 de 5",
+    question: "Tens algum destes sinais agora?",
+    helper: "Dor forte na parte baixa da barriga, febre, feridas, sangramento fora do período ou piora rápida.",
+    options: [
+      { id: "nao", label: "Não", description: "Não tenho nenhum desses sinais.", I: CheckCircle2 },
+      { id: "urgentes", label: "Sim", description: "Tenho um ou mais desses sinais.", I: AlertTriangle },
+      { id: "incerto", label: "Não tenho a certeza", description: "Não sei se o que sinto se encaixa.", I: CircleHelp },
+    ],
+  },
+] as const;
+
+type QuizAnswers = Record<(typeof quizQuestions)[number]["id"], string>;
+
+function QuizOption({
+  option,
+  selected,
+  onSelect,
+}: {
+  option: (typeof quizQuestions)[number]["options"][number];
+  selected: boolean;
+  onSelect: () => void;
+}) {
+  const Icon = option.I;
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-pressed={selected}
+      className={`w-full text-left rounded-2xl border-2 p-4 transition-all duration-200 ${
+        selected
+          ? "border-primary bg-primary/10 shadow-md shadow-primary/10"
+          : "border-border/70 bg-white hover:border-primary/50 hover:bg-pink-50/60"
+      }`}
+      data-testid={`quiz-option-${option.id}`}
+    >
+      <span className="flex items-start gap-3">
+        <span className={`mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
+          selected ? "bg-primary text-white" : "bg-primary/10 text-primary"
+        }`}>
+          <Icon className="h-5 w-5" />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="flex items-center justify-between gap-3">
+            <span className="font-bold text-foreground">{option.label}</span>
+            <span className={`h-5 w-5 shrink-0 rounded-full border-2 ${
+              selected ? "border-primary bg-primary" : "border-primary/30"
+            }`}>
+              {selected && <Check className="h-4 w-4 text-white" />}
+            </span>
+          </span>
+          <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">{option.description}</span>
+        </span>
+      </span>
+    </button>
+  );
+}
+
+function TypewriterText({ text }: { text: string }) {
+  const [visibleLength, setVisibleLength] = useState(0);
+  const isTyping = visibleLength < text.length;
+
+  useEffect(() => {
+    setVisibleLength(0);
+    const interval = window.setInterval(() => {
+      setVisibleLength((previous) => {
+        if (previous >= text.length) {
+          window.clearInterval(interval);
+          return previous;
+        }
+        return previous + 1;
+      });
+    }, 55);
+
+    return () => window.clearInterval(interval);
+  }, [text]);
+
+  return (
+    <p
+      className="mb-5 text-center text-xl font-black text-foreground sm:text-2xl"
+      aria-label={text}
+      aria-live="polite"
+    >
+      <span className={isTyping ? "blur-[0.35px]" : ""}>{text.slice(0, visibleLength)}</span>
+      <span
+        className={`ml-0.5 inline-block font-normal text-primary transition-opacity ${isTyping ? "opacity-100" : "opacity-0"}`}
+        aria-hidden="true"
+      >
+        |
+      </span>
+    </p>
+  );
+}
+
+function QuizResult({
+  answers,
+  onRestart,
+}: {
+  answers: QuizAnswers;
+  onRestart: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="mx-auto max-w-2xl"
+      data-testid="quiz-result"
+    >
+      <div className="rounded-3xl border border-border/70 bg-white p-6 shadow-xl shadow-primary/5 sm:p-8">
+        <div className="mb-6 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+          <img
+            src="/images/hero-product.png"
+            alt="Capa do ebook"
+            className="h-32 w-24 shrink-0 rounded-2xl border border-primary/15 object-cover object-center shadow-lg shadow-primary/10"
+            loading="lazy"
+          />
+          <div className="min-w-0">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-primary">Próximo passo</p>
+            <h3 className="text-xl font-black text-foreground">{PRODUTO}</h3>
+          </div>
+        </div>
+        <ul className="mb-6 space-y-3">
+          {[
+            "Descobre já o que observar — sem continuares na dúvida",
+            "Segue um passo a passo claro para começares hoje",
+            "Aprende os cuidados essenciais para evitar que volte",
+            "Recebe o PDF completo no teu telemóvel e consulta quando precisares",
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-3 text-sm text-foreground">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100">
+                <Check className="h-3 w-3 text-green-600 stroke-[3]" />
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="rounded-2xl bg-green-50 p-5 text-center">
+          <p className="text-sm text-muted-foreground">Acesso único</p>
+          <div className="mt-1 flex items-end justify-center gap-1">
+            <span className="text-5xl font-black leading-none text-foreground">99</span>
+            <span className="mb-1 text-2xl font-bold text-foreground">MT</span>
+          </div>
+          <p className="mt-2 text-xs font-bold uppercase tracking-widest text-green-700">Pagamento único · Recebes no WhatsApp</p>
+        </div>
+
+        <div
+          className="mt-4 rounded-2xl border border-green-200 bg-white p-4"
+          data-testid="quiz-result-payment-methods"
+        >
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { name: "M-Pesa", image: "/images/mpesa.webp" },
+              { name: "e-Mola", image: "/images/emola.webp" },
+            ].map((method) => (
+              <div
+                key={method.name}
+                className="flex items-center justify-center gap-2 rounded-xl bg-green-50 px-3 py-2.5"
+              >
+                <img
+                  src={method.image}
+                  alt={`Pagar por ${method.name}`}
+                  className="h-9 w-9 rounded-lg object-cover shadow-sm"
+                />
+                <span className="text-sm font-bold text-foreground">{method.name}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
+            Pagamento rápido e seguro, sem precisar de cartão.
+          </p>
+        </div>
+        <PulseBtn
+          href={WA_LINK}
+          className="mt-5 w-full rounded-xl bg-green-600 py-4 text-base uppercase tracking-wide text-white shadow-lg hover:bg-green-700"
+          testId="button-quiz-result-cta"
+        >
+          <CreditCard className="h-5 w-5" />
+          Quero receber o guia — 99 MT
+        </PulseBtn>
+        <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
+          Informação simples para te ajudar a cuidar de ti.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        onClick={onRestart}
+        className="mx-auto mt-6 flex items-center gap-2 text-sm font-bold text-primary hover:underline"
+        data-testid="button-quiz-restart"
+      >
+        <RotateCcw className="h-4 w-4" /> Refazer o quiz
+      </button>
+    </motion.div>
+  );
+}
+
+function QuizPage() {
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState<QuizAnswers>({} as QuizAnswers);
+  const current = step >= 0 ? quizQuestions[step] : null;
+  const selected = current ? answers[current.id] : undefined;
+  const finished = step === quizQuestions.length;
+
+  const restartQuiz = () => {
+    setAnswers({} as QuizAnswers);
+    setStep(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const choose = (value: string) => {
+    if (!current) return;
+    setAnswers((previous) => ({ ...previous, [current.id]: value }));
+  };
+  const next = () => {
+    if (!selected) return;
+    setStep((previous) => previous + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const back = () => {
+    setStep((previous) => previous - 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <div className="min-h-screen bg-background font-sans text-foreground pb-8">
+      <TopBanner />
+      <StickyBottomBar visible={finished} />
+      <main className="pt-14">
+        <section className="px-4 pb-16">
+          <div className="mx-auto max-w-2xl">
+            {!finished && <TypewriterText text="Espere, responde a estas perguntas." />}
+
+            {current && (
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, x: 18 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="rounded-3xl border border-primary/15 bg-white p-5 shadow-xl shadow-primary/10 sm:p-8"
+                data-testid={`quiz-question-${current.id}`}
+              >
+                <div className="mb-7">
+                  <div className="mb-3 flex items-center justify-between text-xs font-black uppercase tracking-[0.14em] text-primary">
+                    <span>{current.eyebrow}</span>
+                    <span>{Math.round(((step + 1) / quizQuestions.length) * 100)}%</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-primary/10">
+                    <motion.div
+                      className="h-full rounded-full bg-primary"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${((step + 1) / quizQuestions.length) * 100}%` }}
+                    />
+                  </div>
+                </div>
+                <h2 className="text-2xl font-black leading-tight sm:text-3xl">{current.question}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{current.helper}</p>
+                <div className="mt-6 space-y-3">
+                  {current.options.map((option) => (
+                    <QuizOption
+                      key={option.id}
+                      option={option}
+                      selected={selected === option.id}
+                      onSelect={() => choose(option.id)}
+                    />
+                  ))}
+                </div>
+                <div className="mt-7 flex items-center justify-between gap-3 border-t border-border/60 pt-5">
+                  <button
+                    type="button"
+                    onClick={back}
+                    className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-bold text-muted-foreground transition-colors hover:bg-secondary/20 hover:text-foreground"
+                    data-testid="button-quiz-back"
+                  >
+                    <ArrowLeft className="h-4 w-4" /> Voltar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={next}
+                    disabled={!selected}
+                    className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-black text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-40"
+                    data-testid="button-quiz-next"
+                  >
+                    {step === quizQuestions.length - 1 ? "Ver resultado" : "Continuar"} <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </motion.div>
+            )}
+
+            {finished && <QuizResult answers={answers} onRestart={restartQuiz} />}
+          </div>
+        </section>
+
+      </main>
+      <footer className="bg-foreground px-4 py-8 text-background">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mt-4 text-xs opacity-35">&copy; {new Date().getFullYear()} Todos os direitos reservados.</div>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -156,7 +508,7 @@ function LandingPage() {
                 <div className="flex items-center justify-center lg:justify-start gap-3 mb-5">
                   <img src="/images/mpesa.webp" alt="M-Pesa" className="h-9 w-9 rounded-lg object-cover shadow-sm" />
                   <img src="/images/emola.webp" alt="e-Mola" className="h-9 w-9 rounded-lg object-cover shadow-sm" />
-                  <span className="text-sm font-semibold text-muted-foreground">Paga por M-Pesa ou e-Mola</span>
+                  <span className="text-sm font-semibold text-muted-foreground">Paga facilmente por M-Pesa ou e-Mola</span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-4">
@@ -201,7 +553,7 @@ function LandingPage() {
             <div className="grid md:grid-cols-3 gap-5 mb-8">
               {[
                 { n: "1", I: CreditCard, t: "Clicas no botão", d: 'Clicas em "Comprar Agora" — leva 10 segundos.' },
-                { n: "2", I: Phone, t: "Pagas por M-Pesa", d: "Pagas 99 MT pelo M-Pesa ou e-Mola. Rápido e seguro." },
+                { n: "2", I: Phone, t: "Pagas por M-Pesa ou e-Mola", d: "Pagas 99 meticais pelo M-Pesa ou e-Mola. É rápido e seguro." },
                 { n: "3", I: MessageCircle, t: "Recebes no WhatsApp", d: "O guia chega ao teu WhatsApp HOJE mesmo, em minutos." },
               ].map((x, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-pink-50 rounded-2xl p-6 text-center border border-primary/10">
@@ -214,7 +566,7 @@ function LandingPage() {
             </div>
             <div className="text-center">
               <PulseBtn
-                href={CHECKOUT_LINK}
+                href={WA_LINK}
                 className="bg-primary text-white rounded-full shadow-lg text-lg px-9 py-4"
                 testId="button-como-comprar-cta"
               >
@@ -357,7 +709,7 @@ function LandingPage() {
                       ))}
                     </div>
                     <PulseBtn
-                      href={CHECKOUT_LINK}
+                      href={WA_LINK}
                       className="w-full bg-green-600 hover:bg-green-700 text-white text-base py-4 rounded-xl shadow-lg shadow-green-600/30 uppercase tracking-widest"
                       testId="button-buy-main"
                     >
@@ -401,14 +753,14 @@ function LandingPage() {
             {[
               { q: "O que recebo após comprar?", a: "Recebes um ficheiro PDF com o guia completo, enviado directamente pelo WhatsApp. É só abrir e ler no telemóvel." },
               { q: "Quanto tempo até receber?", a: "Muito rápido! Logo após confirmarmos o teu pagamento, enviamos o guia pelo WhatsApp. Normalmente em menos de 5 minutos." },
-              { q: "Como pago?", a: "Aceitas M-Pesa e e-Mola. É rápido, fácil e seguro. Não precisas de cartão." },
+              { q: "Como pago?", a: "Aceitamos M-Pesa e e-Mola. É rápido, fácil e seguro. Não precisas de cartão." },
               { q: "E se não gostar?", a: "Tens 7 dias para pedir o teu dinheiro de volta. Devolvemos os 99 MT na íntegra, sem perguntas." },
               { q: "Alguém vai saber que comprei?", a: "Não. A compra é completamente discreta. Ninguém fica a saber." },
             ].map((f, i) => <FAQItem key={i} q={f.q} a={f.a} />)}
 
             <div className="mt-8 text-center">
               <PulseBtn
-                href={CHECKOUT_LINK}
+                href={WA_LINK}
                 className="bg-green-600 text-white rounded-xl px-8 py-4 text-base shadow-lg uppercase tracking-wide"
                 testId="button-faq-cta"
               >
@@ -447,7 +799,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <LandingPage />
+        <QuizPage />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
